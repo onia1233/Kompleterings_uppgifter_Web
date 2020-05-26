@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <title>Jquery - get ip address</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Ip adress -->
+    <h1>Ip Address: <span class="ip"></span></h1>
+    <!-- Html file name -->
+    <h1 id="htmlName"></h1>
+    <!-- Port number -->
+    <h1 id="portNumber"></h1>
+
+    <script>
+    // Ip adress
+    $(document).ready(function() {
+            $.getJSON("https://api.ipify.org/?format=json", function(e) {
+        $('.ip').text(e.ip);
+      });
+    });
+
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+    console.log( page );
+
+    // Html file name - https://befused.com/javascript/get-filename-url
+    var url = window.location.pathname;
+    var filename = url.substring(url.lastIndexOf('/')+1);
+
+    document.getElementById("htmlName").innerHTML = filename;
+
+    // Port number - https://www.w3schools.com/jsref/prop_loc_port.asp
+    document.getElementById("portNumber").innerHTML = 
+    "URL port nummer: " + window.location.port;
+  </script>
+
+</body>
+</html>
